@@ -3,9 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horizon Tabs</title>
+    <title>UBGi-PROX Tabs</title>
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/321EZ123/Horizon/refs/heads/main/horizon-logo.png">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root{
+            --bg:#071026;
+            --panel:#0b1220;
+            --muted:#9aa4b2;
+            --accent:#7c3aed;
+            --tab-bg: rgba(255,255,255,0.02);
+            --tab-active: rgba(124,58,237,0.12);
+            --text:#e6eef8;
+        }
+        *{box-sizing:border-box}
+        body{
+            margin:0;
+            font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;
+            background:linear-gradient(120deg,var(--bg), #071428 60%, var(--panel));
+            color:var(--text);
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+        }
+        .browser{
+            width:100%;
+            max-width:1100px;
+            height:80vh;
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            border-radius:12px;
+            overflow:hidden;
+            box-shadow:0 18px 50px rgba(2,6,23,0.7);
+            display:flex;
+            flex-direction:column;
+            border:1px solid rgba(255,255,255,0.03);
+        }
+        .browser-header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:12px 16px;
+            background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+            border-bottom:1px solid rgba(255,255,255,0.02);
+        }
+        .browser-logo{
+            font-weight:700;
+            letter-spacing:0.4px;
+            color:var(--text);
+        }
+        .browser-controls button{
+            margin-left:8px;
+            background:transparent;
+            border:1px solid rgba(255,255,255,0.03);
+            color:var(--muted);
+            padding:6px 8px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+        .content-container{
+            display:flex;
+            flex-direction:column;
+            height:100%;
+        }
+        .tabs-container{
+            display:flex;
+            gap:8px;
+            padding:12px;
+            align-items:center;
+            overflow:auto;
+            background:rgba(0,0,0,0.02);
+        }
+        .new-tab{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            padding:8px 12px;
+            background:var(--tab-bg);
+            border-radius:8px;
+            cursor:pointer;
+            color:var(--muted);
+        }
+        .tab{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            padding:8px 12px;
+            border-radius:8px;
+            background:transparent;
+            color:var(--muted);
+            border:1px solid rgba(255,255,255,0.02);
+        }
+        .tab.active{
+            background:var(--tab-active);
+            color:var(--text);
+            box-shadow:0 8px 20px rgba(124,58,237,0.06);
+        }
+        .iframe-container{
+            flex-grow:1;
+            background:#08101a;
+        }
+        .iframe-container iframe{
+            width:100%;
+            height:100%;
+            border:0;
+        }
+
+        @media (max-width:800px){
+            .browser{height:88vh}
+        }
+    </style>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ4N9FQR6N"></script>
@@ -19,7 +126,7 @@
 <body>
     <div class="browser">
         <div class="browser-header">
-            <div class="browser-logo">Horizon</div>
+            <div class="browser-logo">UBGi-PROX</div>
             <div class="browser-controls">
                 <button class="browser-control-btn">←</button>
                 <button class="browser-control-btn">→</button>
@@ -35,8 +142,8 @@
                     <span>New Tab</span>
                 </div>
                 <div class="tab active" data-tab-id="tab1">
-                    <div class="tab-icon">H</div>
-                    <span class="tab-title">Horizon Search</span>
+                    <div class="tab-icon">U</div>
+                    <span class="tab-title">UBGi-PROX Search</span>
                     <div class="tab-close">×</div>
                 </div>
             </div>
