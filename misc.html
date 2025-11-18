@@ -3,14 +3,18 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/321EZ123/Horizon/refs/heads/main/horizon-logo.png" />
-    <title>Tools | Horizon</title>
+    <title>Tools | UBGi-PROX</title>
     <style>
         :root {
             --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            --primary-color: #635bff;
-            --gradient-start: #a259ff;
-            --gradient-middle: #4776e6;
-            --gradient-end: #ff6b8b;
+            --primary-color: #7c3aed;
+            --bg-start: #071026;
+            --bg-middle: #071428;
+            --bg-end: #0b1220;
+            --card-bg: rgba(255,255,255,0.03);
+            --muted: #9aa4b2;
+            --btn-accent: #b625cc;
+            --btn-contrast: #22c55e;
         }
 
         * {
@@ -21,11 +25,11 @@
 
         body {
             font-family: var(--font-sans);
-            color: #1a1f36;
+            color: #e6eef8;
             line-height: 1.6;
-            background: linear-gradient(120deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            background: linear-gradient(120deg, var(--bg-start), var(--bg-middle), var(--bg-end));
             background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
+            animation: gradientAnimation 20s ease infinite;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -42,15 +46,16 @@
         .bg-graphic {
             position: fixed;
             border-radius: 50%;
-            opacity: 0.4;
+            opacity: 0.18;
             filter: blur(80px);
             z-index: -1;
+            mix-blend-mode: screen;
         }
 
         .bg-graphic-1 {
             width: 600px;
             height: 600px;
-            background-color: var(--gradient-start);
+            background-color: rgba(124,58,237,0.18);
             top: -200px;
             right: -100px;
             animation: float 20s ease-in-out infinite;
@@ -59,7 +64,7 @@
         .bg-graphic-2 {
             width: 500px;
             height: 500px;
-            background-color: var(--gradient-middle);
+            background-color: rgba(71,118,230,0.12);
             bottom: -150px;
             left: -100px;
             animation: float 15s ease-in-out infinite reverse;
@@ -68,7 +73,7 @@
         .bg-graphic-3 {
             width: 300px;
             height: 300px;
-            background-color: var(--gradient-end);
+            background-color: rgba(255,107,139,0.14);
             top: 40%;
             left: 30%;
             animation: float 18s ease-in-out infinite;
@@ -86,34 +91,40 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 2rem;
             position: relative;
             z-index: 10;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: white;
+            color: #ffffff;
             text-decoration: none;
             margin-right: 0.5rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
             margin-right: auto;
         }
 
         .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(230,238,248,0.9);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
         }
 
         .nav-links a:hover {
             color: white;
+            background: rgba(255,255,255,0.03);
         }
 
         .text-center {
@@ -121,7 +132,7 @@
         }
 
         h1, h2 {
-            color: white;
+            color: #ffffff;
             margin-bottom: 1rem;
         }
 
@@ -132,79 +143,82 @@
         }
 
         p {
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--muted);
             margin-bottom: 1rem;
         }
 
         .card {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 1.6rem;
+            margin-bottom: 1.6rem;
+            box-shadow: 0 10px 25px rgba(2,6,23,0.6);
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 680px;
             margin: 0 auto;
             padding: 2rem;
         }
 
-        input[type="url"] {
+        input[type="url"], input[type="text"] {
             width: 100%;
             padding: 12px;
             border: none;
             border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
+            background-color: rgba(255,255,255,0.03);
+            color: #e6eef8;
             margin-bottom: 1rem;
-            transition: all 0.3s;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
         input[type="url"]:focus {
             outline: none;
-            background-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 18px rgba(124,58,237,0.08);
+            background-color: rgba(255,255,255,0.04);
         }
 
         input[type="url"]::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(230,238,248,0.5);
         }
 
         button {
             cursor: pointer;
-            background-color: #b625cc;
+            background-color: var(--btn-accent);
             border: none;
             color: white;
-            padding: 12px 24px;
+            padding: 10px 18px;
             text-align: center;
             border-radius: 10px;
-            font-weight: 500;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            transition: all 0.18s;
+            box-shadow: 0 6px 18px rgba(182,37,204,0.06);
         }
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 30px rgba(182,37,204,0.12);
         }
 
         .button-row {
             display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
+            justify-content: flex-start;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
         }
 
         .home-button {
             display: inline-block;
-            margin-top: 2rem;
+            margin-top: 1rem;
             text-decoration: none;
         }
 
         a {
-            color: white;
+            color: #e6eef8;
             text-decoration: none;
             transition: all 0.3s;
         }
@@ -221,15 +235,18 @@
         }
 
         .btn {
-            font-weight: 500;
-            border-radius: 24px;
-            padding: 0.5rem 1.2rem;
+            font-weight: 600;
+            border-radius: 20px;
+            padding: 0.45rem 1rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.18s;
             font-size: 0.9rem;
             text-decoration: none;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.04);
+            background: transparent;
+            color: var(--muted);
         }
 
         .btn::after {
@@ -239,7 +256,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.3), rgba(255,255,255,0));
+            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.06), rgba(255,255,255,0));
             transform: translateX(-100%);
             transition: transform 0.6s;
         }
@@ -248,22 +265,11 @@
             transform: translateX(100%);
         }
 
-        .btn-secondary {
-            color: white;
-            background: transparent;
-            border: none;
-        }
-
         .btn-primary {
-            background-color: white;
-            color: #635bff;
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 18px rgba(124,58,237,0.12);
         }
 
         @media (max-width: 768px) {
@@ -303,7 +309,7 @@
     <div class="bg-graphic bg-graphic-3"></div>
 
     <header class="navbar">
-        <a href="index.html" class="logo">Horizon</a>
+        <a href="index.html" class="logo">UBGi-PROX</a>
         <nav class="nav-links" style="margin-left: 50px;">
             <a href="projects.html">Games</a>
             <a href="Horizon-Search.html">Proxy</a>
@@ -311,7 +317,7 @@
             <a href="credits.html">Credits</a>
         </nav>
         <div class="nav-actions">
-            <a href="https://github.com/321EZ123/Horizon" class="btn btn-secondary">Github</a>
+            <a href="https://github.com/321EZ123/Horizon" class="btn">Github</a>
             <a href="https://discord.gg/Gv4rVt2SJp" class="btn btn-primary">Discord</a>
         </div>
     </header>
@@ -322,7 +328,7 @@
         <div class="card">
             <h1>about:blank</h1>
             <div>
-                <p>Enter a URL you want to be opened in a about:blank page below:</p>
+                <p>Enter a URL you want to be opened in an about:blank page below:</p>
                 <p><input id="url-target" type="url" pattern="https://.*" placeholder="Enter a website URL" autocomplete="on" /></p>
                 <p>Note this will not work with some websites, but you can copy the link of this website and put it in for extra privacy.</p>
             </div>
@@ -336,7 +342,10 @@
             <p>Change the tab's title and icon to make it look like a different site.</p>
             <h3>Set title</h3>
             <input type="text" id="title" placeholder="Enter title" />
-            <button id="seTitle">Set Title</button>
+            <div class="button-row" style="margin-top:0.5rem;">
+                <button id="seTitle">Set Title</button>
+                <button id="reset">Reset</button>
+            </div>
             <p>Preset Icons:</p>
             <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.5rem; margin-bottom: 1rem;">
                 <button data-text="Google" data-icon="config/img/icons/google.png">Google</button>
@@ -348,7 +357,6 @@
                 <button data-text="Clever" data-icon="config/img/icons/clever.png">Clever</button>
                 <button data-text="Zoom" data-icon="config/img/icons/zoom.png">Zoom</button>
             </div>
-            <button id="reset">Reset</button>
         </div>
 
         <div class="text-center">
@@ -376,14 +384,14 @@
         }
 
         setTitleEl.addEventListener("click", () => {
-            if (titleEl.value) {
+            if (titleEl && titleEl.value) {
                 document.title = titleEl.value;
                 localStorage.setItem("title", titleEl.value);
             }
         });
 
         resetEl.addEventListener("click", () => {
-            document.title = "Miscellaneous | Horizon";
+            document.title = "Miscellaneous | UBGi-PROX";
             document.querySelector("link[rel='icon']").href = "https://raw.githubusercontent.com/321EZ123/Horizon/refs/heads/main/horizon-logo.png";
             localStorage.removeItem("title");
             localStorage.removeItem("icon");
@@ -406,7 +414,7 @@
                 const tab = window.open("about:blank", "_blank");
                 if (tab) {
                     tab.document.documentElement.innerHTML = `
-                        <title>Google</title>
+                        <title>UBGi-PROX</title>
                         <iframe width="100%" height="100%" src="${urlTargetEl.value}" frameborder="0" allowfullscreen></iframe>
                         <style>
                             body, html {
@@ -414,6 +422,7 @@
                                 padding: 0;
                                 height: 100%;
                                 overflow: hidden;
+                                background: #0b1220;
                             }
                             iframe {
                                 position: absolute;
